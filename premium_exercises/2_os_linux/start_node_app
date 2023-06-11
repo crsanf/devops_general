@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#Install Latest Version Of Necessary Applications
+apt update -y
+
+apt install -y nodejs
+apt install -y npm
+
+#Download & Extract File
+file=bootcamp-node-envvars-project-1.0.0.tgz
+url=https://node-envvars-artifact.s3.eu-west-2.amazonaws.com/$file
+
+curl $url -O
+
+tar -xzf $file
+
+#Set Environment Variables, Local User Only For Now
+export APP_ENV=dev
+export DB_USER=myuser
+export DB_PWD=mysecret
+
+#Finish Install & Run
+cd package
+npm install
+nohup node server.js &
