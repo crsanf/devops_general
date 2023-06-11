@@ -1,0 +1,14 @@
+!/bin/bash
+
+read -p "Type 1 to sort by memory, Type 2 to sort by CPU consumption: " input
+read -p "How many lines do you want to print? " lines_to_print
+
+echo "Processes for user $USER"
+echo ""
+
+if [ $input == 1 ]
+then
+ ps aux --sort -%mem | grep -e "^$USER" | head -n $lines_to_print
+else
+ ps aux --sort -%cpu | grep -e "^$USER" | head -n $lines_to_print
+fi
