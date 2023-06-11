@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Processes for user $USER"
+
+ps aux | grep -e "^$USER"
